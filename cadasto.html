@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="style.css">
+
+    <title>cadasto</title>
+</head>
+
+<body id="cadasto">
+
+    <form id="cadasto">
+
+        <main id="cadasto">
+            nome
+        </main>
+
+        <input
+            id="cadasto"
+            type="text"
+            name="nome"
+            placeholder="nome"
+            required>
+
+    </form>
+
+
+    <form id="cadasto">
+
+        form
+        main
+
+        <main id="cadasto">
+            email
+        </main>
+
+        <input
+            id="cadasto"
+            type="email"
+            name="email"
+            placeholder="email"
+            required>
+
+    </form>
+
+
+    <form id="cadasto">
+
+        senha
+
+        <input
+            id="cadasto"
+            type="password"
+            name="senha"
+            placeholder="senha"
+            required>
+
+    </form>
+
+
+    <form id="cadasto">
+
+        nome do papagaio da tatara avó (obrigatorio)
+
+        <input
+            id="cadasto"
+            type="text"
+            name="papagaio"
+            placeholder="nome do papagaio da tatara avó"
+            required>
+
+        obrigatorio
+        obridaghorio
+
+    </form>
+
+
+    <form id="cadasto">
+
+        ip publico da sua maquina
+
+        <input
+            id="cadasto"
+            type="text"
+            name="ip"
+            placeholder="ip publico da sua maquina"
+            required>
+
+    </form>
+
+
+    <form id="cadasto">
+
+        esqueci de perguntar a idade:
+
+        <input
+            id="cadasto"
+            type="number"
+            name="idade"
+            placeholder="idade"
+            min="0"
+            max="150"
+            required>
+
+    </form>
+
+
+    <form id="cadasto">
+
+        tambem o numero de telefone:
+
+        <input
+            id="cadasto"
+            type="tel"
+            name="telefone"
+            placeholder="+55 (DDD) 0000-0000"
+            required>
+
+    </form>
+
+
+    <button type="submit">
+        CADASTRAR
+    </button>
+
+
+    <script>
+        const cadastrar = document.querySelector("button");
+
+        const idade = document.querySelector('input[name="idade"]');
+
+        const telefone = document.querySelector('input[name="telefone"]');
+
+        const ip = document.querySelector('input[name="ip"]');
+
+
+        idade.addEventListener("keydown", (evento) => {
+
+            if (
+                evento.key !== "ArrowUp" &&
+                evento.key !== "ArrowDown" &&
+                evento.key !== "Tab"
+            ) {
+                evento.preventDefault();
+            }
+        });
+
+
+        idade.addEventListener("paste", (evento) => {
+            evento.preventDefault();
+        });
+
+
+        idade.addEventListener("drop", (evento) => {
+            evento.preventDefault();
+        });
+
+
+        telefone.addEventListener("input", () => {
+
+            telefone.value = telefone.value.replace(
+                /[^0-9()+\-]/g,
+                ""
+            );
+        });
+
+
+        ip.addEventListener("input", () => {
+
+            ip.value = ip.value.replace(
+                /[^0-9./]/g,
+                ""
+            );
+        });
+
+
+        cadastrar.addEventListener("click", (evento) => {
+
+            evento.preventDefault();
+
+
+            const campos = document.querySelectorAll("input");
+
+
+            for (const campo of campos) {
+
+                if (!campo.value || campo.value.trim() === "") {
+
+                    alert("PREENCHA TODOS OS CAMPOS");
+
+                    campo.focus();
+
+                    return;
+                }
+            }
+
+
+            const email = document.querySelector(
+                'input[name="email"]'
+            );
+
+
+            const emailValido =
+                /^[^\s@]+@(gmail\.com|googlemail\.com|hotmail\.com|outlook\.com)$/i.test(
+                    email.value
+                );
+
+
+            if (!emailValido) {
+
+                alert(
+                    "DIGITE UM EMAIL DO GOOGLE OU HOTMAIL/OUTLOOK"
+                );
+
+                email.focus();
+
+                return;
+            }
+
+
+            const partesIp = ip.value.split("/");
+
+            const enderecoIp = partesIp[0];
+
+            const partesEndereco = enderecoIp.split(".");
+
+            let ipValido = partesEndereco.length === 4;
+
+
+            if (ipValido) {
+
+                for (const parte of partesEndereco) {
+
+                    if (
+                        parte === "" ||
+                        !/^\d+$/.test(parte) ||
+                        Number(parte) < 0 ||
+                        Number(parte) > 255
+                    ) {
+
+                        ipValido = false;
+
+                        break;
+                    }
+                }
+            }
+
+
+            if (ipValido && partesIp.length === 2) {
+
+                const mascara = partesIp[1];
+
+                if (
+                    !/^\d+$/.test(mascara) ||
+                    Number(mascara) < 0 ||
+                    Number(mascara) > 32
+                ) {
+
+                    ipValido = false;
+                }
+            }
+
+
+            if (partesIp.length > 2) {
+
+                ipValido = false;
+            }
+
+
+            if (!ipValido) {
+
+                alert("DIGITE UM IP VALIDO");
+
+                ip.focus();
+
+                return;
+            }
+
+
+            const telefoneValido =
+                /^\+55 \(\d{2}\) \d{4}-\d{4}$/.test(
+                    telefone.value
+                );
+
+
+            if (!telefoneValido) {
+
+                alert(
+                    "DIGITE O TELEFONE NO FORMATO +55 (DDD) 0000-0000"
+                );
+
+                telefone.focus();
+
+                return;
+            }
+
+
+            window.location.href = "senha.html";
+        });
+    </script>
+
+</body>
+</html>

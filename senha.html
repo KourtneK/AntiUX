@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>digita a senha</title>
+
+    <style>
+        body {
+            background: black;
+            color: white;
+            font-family: Arial;
+            margin: 0;
+        }
+
+        #senha {
+            margin: 50px;
+            padding: 30px;
+            border: 10px dashed red;
+        }
+
+        #senha input {
+            background: white;
+            color: black;
+            border: 5px solid red;
+            padding: 20px;
+            font-size: 25px;
+            width: 80%;
+        }
+
+        #requisitos {
+            margin-top: 100px;
+        }
+
+        .requisito {
+            margin: 120px 50px;
+            padding: 30px;
+            border: 7px solid yellow;
+            font-size: 25px;
+            min-height: 80px;
+        }
+
+        .cumprido {
+            color: lime;
+            border-color: lime;
+        }
+
+        .nao-cumprido {
+            color: red;
+            border-color: red;
+        }
+
+        .simbolo {
+            font-size: 45px;
+            font-weight: bold;
+            margin-right: 20px;
+        }
+
+        #fim {
+            height: 300px;
+            margin-top: 200px;
+            text-align: center;
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <main id="senha">
+
+        <p>
+            digite sua senha abaixo:
+        </p>
+
+        <input
+            type="password"
+            id="campo-senha"
+            placeholder="senha : exmplo : 123">
+
+
+        <section id="requisitos">
+
+            <div class="requisito" id="req-tamanho">
+
+                <span class="simbolo">
+                    X
+                </span>
+
+                tem q te 8 caractere no minimo
+
+            </div>
+
+
+            <div class="requisito" id="req-maiusculas">
+
+                <span class="simbolo">
+                    X
+                </span>
+
+                3 letra maiuscula
+
+            </div>
+
+
+            <div class="requisito" id="req-minusculas">
+
+                <span class="simbolo">
+                    X
+                </span>
+
+                2 minusculo
+
+            </div>
+
+
+            <div class="requisito" id="req-numeros">
+
+                <span class="simbolo">
+                    X
+                </span>
+
+                4 numero
+
+            </div>
+
+
+            <div class="requisito" id="req-especiais">
+
+                <span class="simbolo">
+                    X
+                </span>
+
+                5 daqueles bagulho caractere especial
+
+            </div>
+
+
+            <div class="requisito" id="req-numeros-sequencia">
+
+                <span class="simbolo">
+                    X
+                </span>
+
+                sem sekensia
+
+            </div>
+
+
+            <div class="requisito" id="req-letras-sequencia">
+
+                <span class="simbolo">
+                    X
+                </span>
+
+                as letras não podim estar em sekencia
+
+            </div>
+
+
+            <div class="requisito" id="req-pulos">
+
+                <span class="simbolo">
+                    X
+                </span>
+
+                coisa wue ppula letra e numero conta na sekenzia
+
+            </div>
+
+
+            <div class="requisito" id="req-reverso">
+
+                <span class="simbolo">
+                    X
+                </span>
+
+                se for invertido tambe ta fodido
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <button id="cadastrar">
+        CADASTRAR
+    </button>
+
+    <script src="senha.js"></script>
+
+</body>
+</html>
